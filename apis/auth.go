@@ -3,8 +3,8 @@ package apis
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v4"
-	"gone/code"
-	"gone/middle"
+	"godwill/code"
+	"godwill/middle"
 	"time"
 )
 

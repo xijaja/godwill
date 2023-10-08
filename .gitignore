@@ -11,6 +11,12 @@
 logs
 *.log
 
+# env
+.env
+.env.dev
+.env.prod
+!.env.example
+
 # Script files
 .sh
 makefile
@@ -19,3 +25,4 @@ http
 
 # Build files
 tmp
+godwill

@@ -1,19 +1,18 @@
-import { defineConfig } from "vite";
-import solidPlugin from "vite-plugin-solid";
-import autoImport from "unplugin-auto-import/vite";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+import { join } from "path";
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    solidPlugin(),
-    autoImport({
-      dts: "./src/auto-import.d.ts",
-      imports: ["solid-js", "@solidjs/router"],
-    }),
-  ],
-  server: {
-    port: 3000,
-  },
-  build: {
-    target: "esnext",
-  },
-});
+  plugins: [react()],
+  resolve: {
+    alias: {
+      // '@': join(__dirname, "src"),
+      '@components': join(__dirname, "src/components"),
+      '@styles': join(__dirname, "src/styles"),
+      '@store': join(__dirname, "src/store"),
+      '@pages': join(__dirname, "src/pages"),
+      '@lib': join(__dirname, "src/lib"),
+    }
+  }
+})

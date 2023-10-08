@@ -1,10 +1,12 @@
-import Layout from "../layouts/Layout";
+import Layout from '@components/Layouts/Layout.tsx'
 
 export default function AboutPage() {
-  return (
-    <Layout>
-      <h1>About</h1>
-      <p>This is the About component.</p>
-    </Layout>
-  );
+	return (
+		<>
+			<Layout>
+				<p>这是关于页面</p>
+				<a href="/dash">返回面板</a>
+			</Layout>
+		</>
+	)
 }

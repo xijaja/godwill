@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/requestid"
-	"gone/db/model"
+	"godwill/db/model"
 	"log"
 	"time"
 )

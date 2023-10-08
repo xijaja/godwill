@@ -1,22 +1,38 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // class 表示允许使用 class="dark" 手动切换暗黑模式，media 表示根据系统切换
-  // darkMode: ["class", '[data-mode="forest"]'],
-  darkMode: "media",
-  content: ["./src/**/*.{ts,tsx}", "./src/*.{ts,tsx}"],
+  darkMode: ["class"],
+  content: [
+    './src/**/*.{ts,tsx}',
+	],
   theme: {
-    extend: {},
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
-  // 配置 daisyui 插件主题
-  daisyui: {
-    styled: true, // 是否启用 daisyui 的样式
-    themes: ["light", "dark"], // 更改它可以使用其他主题
-    base: true, //  是否启用基本样式
-    utils: true, // 是否启用工具类
-    logs: false, // 是否启用日志 (在控制台中显示 daisyui 的日志)
-    rtl: false, // 是否启用 rtl 模式 (从右到左)
-    prefix: "", // 更改前缀
-    darkTheme: "dark", // 指定暗色主题
-  },
-};
+  plugins: [
+      require('@tailwindcss/forms'),
+      require('@tailwindcss/typography'),
+      require("tailwindcss-animate"),
+      require('preline/plugin'),
+  ],
+}

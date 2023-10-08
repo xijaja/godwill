@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
-	"gone/apis"
-	"gone/middle"
-	"gone/start"
+	"godwill/apis"
+	"godwill/middle"
+	"godwill/start"
 	"log"
 	"os"
 	"os/signal"
@@ -17,8 +17,8 @@ import (
 func main() {
 	// 创建一个 Fiber 实例
 	app := fiber.New(fiber.Config{
-		AppName: "Gone App", // 设置应用名称
-		Prefork: *start.P,   // 是否启用多线程
+		AppName: "Godwill Decision Engine", // 设置应用名称
+		Prefork: *start.P,                  // 是否启用多线程
 	})
 
 	// 注册路由组和中间件

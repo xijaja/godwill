@@ -3,8 +3,8 @@ package start
 import (
 	"flag"
 	"fmt"
-	"gone/auto"
-	"gone/utils"
+	"godwill/auto"
+	"godwill/utils"
 )
 
 // ---------------------------------------------

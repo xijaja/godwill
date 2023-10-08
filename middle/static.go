@@ -3,8 +3,8 @@ package middle
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
-	"gone/frontend"
-	"gone/start"
+	"godwill/frontend"
+	"godwill/start"
 	"io/fs"
 	"net/http"
 )

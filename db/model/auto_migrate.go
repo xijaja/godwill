@@ -2,8 +2,9 @@ package model
 
 import (
 	"fmt"
-	"gone/db/access"
-	"gone/start"
+	"godwill/db/access"
+	"godwill/start"
+	"godwill/utils"
 	"gorm.io/gorm"
 	"log"
 	"reflect"
@@ -15,12 +16,25 @@ var db *gorm.DB
 
 // 初始化数据库
 func init() {
+	pgc := start.Config.Database
 	// 初始化数据库
-	db = access.NewConnect(start.Config.Database, access.Postgres).DB
+	db = access.InitPostgresSQL(pgc.Host, pgc.User, pgc.Port, pgc.Pass, pgc.Base)
 	// 自动迁移，入参如 &Logs{}, &Todos{}
-	err := db.AutoMigrate(sqlTagExecutor(&Logs{}, &Todos{})...)
+	err := db.AutoMigrate(sqlTagExecutor(&User{}, &Product{}, &Strategy{}, &StrategyVersion{}, &Logs{})...)
 	if err != nil {
 		log.Fatal("数据库迁移失败:", err)
+	}
+
+	// 初始化数据，创建 admin 账户
+	var admin User
+	// 如果用户不存在则创建用户
+	if err := admin.FindOneByUsername("admin").Error; err != nil {
+		admin = User{
+			Username: "admin",
+			Password: utils.MakeMd5("123456"),
+			Role:     SuperUserRole,
+		}
+		admin.CreateOne()
 	}
 }
 
